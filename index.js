@@ -18,23 +18,17 @@ app.get('/', (req, res) => {
 
 // Ruta adicional para demostrar otro mensaje
 app.get("/hola/", (req, res) => {
-    res.type('text/plain');
-    res.send('Hola Bienvenido a Hola');
+    res.render();
 });
 
 // Custom 404 page - Esto debe ser el último middleware de rutas que no se encontraron
 app.use((req, res) => {
-    res.type('text/plain');
-    res.status(404);  // Código correcto para "No Encontrado"
-    res.send('404 - Not Found');
+    res.status(404).render('404');
 });
 
 // Custom 500 page - Middleware para manejar errores internos
 app.use((err, req, res, next) => {
-    console.error(err.message);
-    res.type('text/plain');
-    res.status(500);
-    res.send('500 - Server Error');
+    res.status(500).render('500');
 });
 
 // Iniciar el servidor
