@@ -13,7 +13,7 @@ const images = [
     { src: "/img/img1.jpeg", url: "https://www.apple.com/us-edu/store" },
     { src: "/img/img2.jpeg", url: "https://www.consejonacionalmorena.mx" },
     { src: "/img/img3.jpeg", url: "https://www.youtube.com/watch?v=EQqj7TMqfYM" },
-    { src: "/img/img4.jpeg", url: "https://www.saes.upiit.ipn.mx3" },
+    { src: "/img/img4.jpeg", url: "https://www.youtube.com" },
 ];
 
 
