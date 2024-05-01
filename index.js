@@ -1,16 +1,28 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+const __filename =  fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const images = [
+    { src: "/img/img1.jpeg", url: "https://www.apple.com/us-edu/store" },
+    { src: "/img/img2.jpeg", url: "https://www.consejonacionalmorena.mx" },
+    { src: "/img/img3.jpeg", url: "https://www.youtube.com/watch?v=EQqj7TMqfYM" },
+    { src: "/img/img4.jpeg", url: "https://www.saes.upiit.ipn.mx3" },
+];
+
 
 // Configurar Handlebars como motor de plantillas
 app.engine('handlebars', engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+app.use(express.static(__dirname + "/public"));
 
 // Ruta principal que muestra una página inicial renderizada
 app.get('/', (req, res) => {
@@ -19,7 +31,8 @@ app.get('/', (req, res) => {
 
 // Ruta adicional para demostrar otro mensaje
 app.get("/hola/", (req, res) => {
-    res.render("hola");
+    const randomImage = images[Math.floor(Math.random()*images.length)]
+    res.render("hola", {image: randomImage});
 });
 
 // Custom 404 page - Esto debe ser el último middleware de rutas que no se encontraron
