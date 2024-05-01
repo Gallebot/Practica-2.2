@@ -11,6 +11,7 @@ app.engine('handlebars', engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 
+
 // Ruta principal que muestra una página inicial renderizada
 app.get('/', (req, res) => {
     res.render("inicio");
@@ -18,7 +19,7 @@ app.get('/', (req, res) => {
 
 // Ruta adicional para demostrar otro mensaje
 app.get("/hola/", (req, res) => {
-    res.render();
+    res.render("hola");
 });
 
 // Custom 404 page - Esto debe ser el último middleware de rutas que no se encontraron
