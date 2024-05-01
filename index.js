@@ -24,23 +24,23 @@ app.set('views', './views');
 
 app.use(express.static(__dirname + "/public"));
 
-// Ruta principal que muestra una página inicial renderizada
+// Ruta principal 
 app.get('/', (req, res) => {
     res.render("inicio");
 });
 
-// Ruta adicional para demostrar otro mensaje
+// Ruta adicional de las imagenes
 app.get("/hola/", (req, res) => {
     const randomImage = images[Math.floor(Math.random()*images.length)]
     res.render("hola", {image: randomImage});
 });
 
-// Custom 404 page - Esto debe ser el último middleware de rutas que no se encontraron
+// Custom 404 page 
 app.use((req, res) => {
     res.status(404).render('404');
 });
 
-// Custom 500 page - Middleware para manejar errores internos
+// Custom 500 page
 app.use((err, req, res, next) => {
     res.status(500).render('500');
 });
