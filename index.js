@@ -2,6 +2,20 @@ import express from 'express';
 const app = express();
 const port = process.env.PORT || 3000;
 
+//Aquí agregamos las rutas
+app.get("/", (req, res) => {
+    res.type('text/plain')
+    res.send('Hola Bienvenido')
+});
+
+app.get("/hola/", (req, res) => {
+    res.type('text/plain')
+    res.send('Hola Bienvenido a Hola')
+});
+
+
+
+
 //custom 404 page
 app.use((req,res) => {
     res.type('text/plain')
