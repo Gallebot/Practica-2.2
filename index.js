@@ -9,9 +9,12 @@ const port = process.env.PORT || 3000;
 // Configurar Handlebars como motor de plantillas
 app.engine('handlebars', engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 // Ruta principal que muestra una página inicial renderizada
-app.get('/', (req, res) => res.render("inicio"));
+app.get('/', (req, res) => {
+    res.render("inicio");
+});
 
 // Ruta adicional para demostrar otro mensaje
 app.get("/hola/", (req, res) => {
